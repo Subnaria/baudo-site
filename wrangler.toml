@@ -2,5 +2,8 @@ name = "baudo-worker"
 main = "src/index.js"
 compatibility_date = "2024-12-01"
 
+route = "https://baudo.fr/api/subscribers"
+
 [vars]
 CHANNEL_ID = "UCLVLCqbRs6E063eYdF0658w"
+
