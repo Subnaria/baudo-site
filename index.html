@@ -4,17 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BAUDO - Game Developer & Content Creator</title>
-  <meta name="description" content="Portfolio de Baudo, développeur de jeux vidéo indépendant et créateur de contenu. Découvrez mes projets, jeux et réseaux sociaux." />
+  <meta name="description" content="Découvrez le portfolio de Baudo : jeux vidéo, projets indépendants et contenu gaming sur YouTube, Twitch et plus ! ">
   <link rel="stylesheet" href="Front-end/style.css" />
   <link rel="icon" type="image/gif" href="img/Basic/Branding/baudo-site.webp"/>
   <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+  <link rel="canonical" href="https://baudo.fr/">
   <meta name="keywords" content="Baudo, DevBaudo, Zbaudo, Dax, jeux vidéo, développeur, Android, iOS, Twitch, YouTube, Discord, TikTok, Instagram, itch.io, Infinite Climb, Lethal Room, Boom Bouga, Waffle Game, Fight for rosbif" />
   <meta name="author" content="cscpacman" />
-  <meta property="og:title" content="Baudo (DevBaudo, Zbaudo) - Créateur de jeux vidéo & contenu gaming" />
-  <meta property="og:description" content="Portfolio professionnel de Baudo, développeur de jeux vidéo indépendant et créateur de contenu. Découvrez mes projets, jeux et réseaux sociaux." />
-  <meta property="og:image" content="img/Basic/Branding/baudo-site.webp" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://baudo.fr/" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:site_name" content="Baudo Portfolio" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Baudo - Développeur de jeux vidéo & Créateur de contenu" />
+  <meta name="twitter:description" content="Découvrez le portfolio de Baudo : jeux vidéo, projets indépendants et contenu gaming sur YouTube, Twitch et plus." />
+  <meta name="twitter:image" content="img/Basic/Branding/baudo-site.webp" />
 </head>
 <body>
   <!-- Loading Screen -->
@@ -38,6 +40,13 @@
     </div>
   </nav>
 
+  <!-- YouTube Banner Section -->
+  <section class="youtube-banner scroll-reveal">
+    <div class="banner-container">
+      <img src="img/Basic/Banner/Banner-Youtube.png" alt="Bannière YouTube BAUDO" class="banner-image">
+    </div>
+  </section>
+
   <!-- Hero Section -->
   <section class="hero" id="home">
     <div class="hero-content fade-in">
@@ -50,20 +59,26 @@
         Créateur de jeux vidéo indépendant passionné. Je transforme des idées en expériences interactives mémorables.
       </p>
       
-      <div class="stats-container">
-        <div class="stat">
-          <span class="stat-number" id="subCount">...</span>
-          <span class="stat-label">Abonnés</span>
-        </div>
-        <div class="stat">
-          <span class="stat-number">7+</span>
-          <span class="stat-label">Jeux publiés</span>
-        </div>
-        <div class="stat">
-          <span class="stat-number">3</span>
-          <span class="stat-label">Plateformes</span>
-        </div>
+    <div class="stats-container">
+      <div class="stat">
+        <span class="stat-number" id="subCount">...</span>
+        <span class="stat-label">Abonnés</span>
       </div>
+      <div class="stat">
+        <span class="stat-number">7+</span>
+        <span class="stat-label">Jeux publiés</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">3</span>
+        <span class="stat-label">Plateformes</span>
+      </div>
+      <!-- NOUVEAU : Compteur de vues (maintenant au même niveau) -->
+      <div class="stat">
+        <span class="stat-number" id="siteViews">...</span>
+        <span class="stat-label">Visites</span>
+      </div>
+    </div>
+
 
       <div class="cta-buttons">
         <a href="https://www.youtube.com/@Dev_Baudo" target="_blank" class="btn btn-primary">
@@ -82,20 +97,9 @@
     <div class="about-content">
       <div class="about-text">
         <p>
-          Salut ! Je suis <strong>Baudo</strong>, aussi connu sous les pseudos <strong>DevBaudo</strong> et <strong>Zbaudo</strong>.
+          Juste un <strong>gars</strong> qui <strong>joue</strong> à <strong>créer</strong> des <strong>jeux vidéo 🕹️</strong> (à méditer).
         </p>
-        <p>
-          Développeur de jeux vidéo indépendant, je crée des expériences ludiques uniques et partage mon parcours créatif avec ma communauté.
-        </p>
-        <p>
-          Du concept au déploiement sur mobile et PC, je m'occupe de tout enfin presque ! : game design, programmation, et publication.
-        </p>
-        <p>
-          Paul C m'aider sur la partie graphisme.
-        </p>
-        <p>
-          Et !konss s'occupe du sounddesign ! 
-        </p>
+        <p>⭐Mes <strong>Compétences</strong>⭐</p>
       </div>
       <div class="skills-grid">
         <div class="skill-badge">
@@ -138,7 +142,6 @@
         <div class="game-content">
           <h3 class="game-title">Lethal Room</h3>
           <span class="game-platform">📱 Android / iOS</span>
-          <p class="game-description">description...</p>
         </div>
       </a>
 
@@ -147,7 +150,6 @@
         <div class="game-content">
           <h3 class="game-title">Infinite Climb</h3>
           <span class="game-platform">📱 Android / iOS</span>
-          <p class="game-description">description...</p>
         </div>
       </a>
 
@@ -156,7 +158,6 @@
         <div class="game-content">
           <h3 class="game-title">Boom Bouga</h3>
           <span class="game-platform">💻 PC (itch.io)</span>
-          <p class="game-description">description...</p>
         </div>
       </a>
 
@@ -165,7 +166,6 @@
         <div class="game-content">
           <h3 class="game-title">Waffle Games</h3>
           <span class="game-platform">💻 PC (itch.io)</span>
-          <p class="game-description">description...</p>
         </div>
       </a>
 
@@ -174,7 +174,22 @@
         <div class="game-content">
           <h3 class="game-title">Fight for Rosbif</h3>
           <span class="game-platform">💻 PC (itch.io)</span>
-          <p class="game-description">description...</p>
+        </div>
+      </a>
+
+      <a href="https://dev-baudo.itch.io/eylo" target="_blank" class="game-card">
+        <img src="img/Basic/Banner/Banner-Eylo.webp" alt="Escape From Eylo icon" class="game-image">
+        <div class="game-content">
+          <h3 class="game-title">Escape From Eylo</h3>
+          <span class="game-platform">💻 PC (itch.io)</span>
+        </div>
+      </a>
+
+      <a href="https://dev-baudo.itch.io/juice" target="_blank" class="game-card">
+        <img src="img/Basic/Banner/Banner-Juice.webp" alt="Escape From Eylo icon" class="game-image">
+        <div class="game-content">
+          <h3 class="game-title">JUICE</h3>
+          <span class="game-platform">💻 PC (itch.io)</span>
         </div>
       </a>
     </div>
@@ -191,6 +206,15 @@
     <h2 class="section-title">Game Jams</h2>
     <div class="gamejam-grid" id="gamejamGrid"></div>
   </section>
+
+  <!-- Modal pour les détails de la Game Jam -->
+  <div id="jamModal" class="jam-modal">
+    <div class="jam-modal-overlay"></div>
+    <div class="jam-modal-content">
+      <button class="jam-modal-close" onclick="closeJamModal()">&times;</button>
+      <div class="jam-modal-body"></div>
+    </div>
+  </div>
 
   <!-- Social Section -->
   <section id="social" class="scroll-reveal">
@@ -316,6 +340,8 @@
   <!-- Footer -->
   <footer>
     <div class="footer-content">
+    <!-- Compteur de vues -->
+    <div class="view-counter">
       <div class="footer-links">
         <a href="#home">Accueil</a>
         <a href="#about">À propos</a>
@@ -329,4 +355,7 @@
       </p>
     </div>
   <script src="Front-end/script.js"></script>
+  <script src="Front-end/analytics.js"></script>
   </footer>
+</body>
+</html>
