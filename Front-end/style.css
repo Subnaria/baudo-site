@@ -104,14 +104,95 @@
       width: 100%;
     }
 
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      color: var(--text-primary);
-      font-size: 1.5rem;
-      cursor: pointer;
+      /* Navigation Mobile */
+  .nav-links.mobile-active {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: rgba(15, 23, 42, 0.98);
+    backdrop-filter: blur(12px);
+    padding: 2rem;
+    gap: 1.5rem;
+    border-bottom: 1px solid var(--border);
+    animation: slideDown 0.3s ease;
+    z-index: 999;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
     }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .nav-links.mobile-active a {
+    font-size: 1.2rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+  }
+
+  .mobile-menu-btn:hover {
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--primary);
+  }
+
+  .mobile-menu-btn.active {
+    transform: rotate(90deg);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+    }
+
+    .mobile-menu-btn {
+      display: flex;
+    }
+
+    .hero {
+      padding-top: 6rem;
+    }
+
+    .about-content {
+      grid-template-columns: 1fr;
+    }
+
+    .stats-container {
+      gap: 2rem;
+    }
+
+    .social-card {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .social-card:hover {
+      transform: translateY(-10px) translateX(0);
+    }
+  }
 
     /* Hero Section */
     .hero {
@@ -206,7 +287,7 @@
 
     .stats-container {
       display: flex;
-      gap: 3rem;
+      gap: 2rem;
       justify-content: center;
       margin: 2rem 0;
       flex-wrap: wrap;
@@ -214,6 +295,8 @@
 
     .stat {
       text-align: center;
+      min-width: 100px;
+      flex-shrink: 0;
     }
 
     .stat-number {
@@ -224,6 +307,7 @@
       background-clip: text;
       -webkit-text-fill-color: transparent;
       display: block;
+      white-space: nowrap;
     }
 
     .stat-label {
@@ -231,6 +315,7 @@
       font-size: 0.9rem;
       text-transform: uppercase;
       letter-spacing: 1px;
+      white-space: nowrap;
     }
 
     .cta-buttons {
@@ -239,6 +324,38 @@
       justify-content: center;
       flex-wrap: wrap;
       margin-top: 2rem;
+    }
+
+    /* Responsive pour mobile */
+    @media (max-width: 768px) {
+      .stats-container {
+        gap: 1.5rem;
+      }
+      
+      .stat {
+        min-width: 80px;
+      }
+      
+      .stat-number {
+        font-size: 1.5rem;
+      }
+      
+      .stat-label {
+        font-size: 0.75rem;
+      }
+    }
+
+    /* Pour très petits écrans, passer en 2 colonnes */
+    @media (max-width: 480px) {
+      .stats-container {
+        gap: 1rem;
+        max-width: 300px;
+        margin: 2rem auto;
+      }
+      
+      .stat {
+        flex: 0 0 calc(50% - 0.5rem);
+      }
     }
 
     .btn {
@@ -278,6 +395,89 @@
       transform: translateY(-3px);
     }
 
+    /* YouTube Banner Section - Version Améliorée */
+      .youtube-banner {
+      padding: 7rem 1rem 2rem 1rem; /* Décalage top pour nav + bottom */
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+    }
+
+    .banner-container {
+      width: 100%;
+      max-width: 2000px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      aspect-ratio: 16/5; /* Ratio YouTube classique */
+      transition: transform 0.5s ease;
+    }
+
+    .banner-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.5s ease;
+      transform: scale(1.05);
+    }
+
+    /* --------------------------
+      Responsive adjustments
+    -------------------------- */
+    @media (max-width: 1024px) {
+      .youtube-banner {
+        padding: 4rem 1rem 1.5rem 1rem;
+      }
+
+      .banner-container {
+        aspect-ratio: 16/5;
+        transform: scale(1.04);
+      }
+
+      .banner-image {
+        transform: scale(1.03);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .youtube-banner {
+        padding: 3.5rem 1rem 1rem 1rem;
+      }
+
+      .banner-container {
+        aspect-ratio: 16/6; /* Légèrement plus haut pour mobile */
+        border-radius: 16px;
+        transform: scale(1.03);
+      }
+
+      .banner-image {
+        transform: scale(1.02);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .youtube-banner {
+        padding: 3rem 0.5rem 0.5rem 0.5rem;
+      }
+
+      .banner-container {
+        aspect-ratio: 16/7; /* Plus vertical pour petits écrans */
+        border-radius: 12px;
+        transform: scale(1.02);
+      }
+
+      .banner-image {
+        transform: scale(1.02);
+      }
+    }
+
+
     /* Section Styles */
     section {
       padding: 5rem 2rem;
@@ -307,11 +507,19 @@
     /* About Section */
     .about-content {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
+      grid-template-columns: 1fr; /* une seule colonne, texte au-dessus de la grille */
+      gap: 2.5rem; /* espace entre texte et grille */
+      align-items: start; /* alignement en haut */
     }
 
+    /* Texte centré */
+    .about-text {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    /* Texte centré et responsive */
     .about-text p {
       color: var(--text-secondary);
       margin-bottom: 1rem;
@@ -320,6 +528,20 @@
 
     .about-text strong {
       color: var(--primary);
+    }
+
+    /* Responsive : texte au-dessus sur tablettes et mobiles */
+    @media (max-width: 1024px) {
+      .about-content {
+        grid-template-columns: 1fr; /* une seule colonne */
+        gap: 2rem;
+      }
+
+      .about-text {
+        text-align: center; /* centre le texte */
+        max-width: 800px;
+        margin: 0 auto;
+      }
     }
 
     .skills-grid {
@@ -351,6 +573,10 @@
     .skill-name {
       font-weight: 600;
       color: var(--text-primary);
+      white-space: normal; /* permet le retour à la ligne */
+      line-height: 1.3;   /* espace entre les lignes */
+      text-align: center;
+      
     }
 
     /* Games Grid */
@@ -373,14 +599,12 @@
       transform-style: preserve-3d;
     }
 
-    /* Animation douce au hover */
     .game-card:hover {
       transform: translateY(-8px) scale(1.02);
       box-shadow: 0 20px 40px rgba(99, 102, 241, 0.25);
       border-color: var(--primary);
     }
 
-    /* Effet de brillance au hover */
     .game-card::before {
       content: '';
       position: absolute;
@@ -450,47 +674,12 @@
       transform: translateX(5px);
     }
 
-    .game-description {
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-
-    /* Bouton CTA */
-    .btn {
-      padding: 1rem 2rem;
-      border-radius: 50px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      cursor: pointer;
-      border: none;
-      font-size: 1rem;
-    }
-
-    .btn-primary {
-      background: var(--gradient-1);
-      color: white;
-      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
-    }
-
-    /* Animation subtile pour mobile */
     @media (hover: none) {
       .game-card:active {
         transform: scale(0.98);
       }
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
       .games-grid {
         grid-template-columns: 1fr;
@@ -550,7 +739,7 @@
       font-size: 0.9rem;
     }
 
-    /* Contact Section */
+    /* Contact Section */ 
      .contact-content {
       text-align: center;
       max-width: 800px;
@@ -1016,7 +1205,7 @@
       text-align: center;
       padding: 4rem 2rem;
       color: var(--text-muted);
-      grid-column: 1 / -1; /* Prend toute la largeur de la grid */
+      grid-column: 1 / -1;
     }
 
     .empty-icon {
@@ -1038,4 +1227,283 @@
       .countdown-value {
         font-size: 1.5rem;
       }
+    }
+
+      /* Modal pour Game Jam */
+    .jam-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1000;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .jam-modal.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .jam-modal-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+    }
+
+    .jam-modal-content {
+      position: relative;
+      background: var(--bg-card);
+      border: 2px solid var(--border);
+      border-radius: 24px;
+      max-width: 700px;
+      width: 90%;
+      max-height: 85vh;
+      overflow-y: auto;
+      z-index: 1001;
+      animation: slideUp 0.4s ease;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .jam-modal-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid var(--border);
+      color: var(--text-primary);
+      font-size: 2rem;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    .jam-modal-close:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+      transform: rotate(90deg);
+    }
+
+    .jam-modal-header {
+      position: relative;
+      height: 200px;
+      background: var(--gradient-1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-radius: 22px 22px 0 0;
+    }
+
+    .jam-modal-header::before {
+      content: '🎮';
+      font-size: 8rem;
+      opacity: 0.2;
+      position: absolute;
+    }
+
+    .jam-modal-icon {
+      font-size: 5rem;
+      z-index: 1;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .jam-modal-status {
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      padding: 0.6rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      backdrop-filter: blur(10px);
+    }
+
+    /* Status Badge pour Modal */
+    .jam-modal-status.live {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--success);
+      border: 2px solid var(--success);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .jam-modal-status.upcoming {
+      background: rgba(245, 158, 11, 0.2);
+      color: var(--warning);
+      border: 2px solid var(--warning);
+    }
+
+    .jam-modal-status.ended {
+      background: rgba(148, 163, 184, 0.2);
+      color: var(--text-muted);
+      border: 2px solid var(--text-muted);
+    }
+
+    .jam-modal-body {
+      padding: 2rem;
+    }
+
+    .jam-modal-title {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+
+    .jam-modal-theme {
+      color: var(--primary);
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .jam-modal-description {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .jam-modal-info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .jam-info-item {
+      background: rgba(99, 102, 241, 0.05);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem;
+    }
+
+    .jam-info-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+
+    .jam-info-value {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .jam-modal-countdown {
+      background: rgba(99, 102, 241, 0.1);
+      border: 2px solid var(--primary);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .jam-modal-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .jam-modal-btn {
+      flex: 1;
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      text-align: center;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .jam-modal-btn-primary {
+      background: var(--gradient-1);
+      color: white;
+    }
+
+    .jam-modal-btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+    }
+
+    .jam-modal-btn-secondary {
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      border: 2px solid var(--border);
+    }
+
+    .jam-modal-btn-secondary:hover {
+      border-color: var(--primary);
+      background: rgba(99, 102, 241, 0.1);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive Modal */
+    @media (max-width: 768px) {
+      .jam-modal-content {
+        width: 95%;
+        max-height: 90vh;
+      }
+
+      .jam-modal-body {
+        padding: 1.5rem;
+      }
+
+      .jam-modal-title {
+        font-size: 1.5rem;
+      }
+
+      .jam-modal-info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .jam-modal-actions {
+        flex-direction: column;
+      }
+    }
+
+    /* Empêcher le scroll du body quand le modal est ouvert */
+    body.modal-open {
+      overflow: hidden;
     }
