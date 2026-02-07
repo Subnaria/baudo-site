@@ -68,8 +68,6 @@ async function sendVisit() {
     if (data.success && typeof data.totalVisits === "number") {
       localStorage.setItem(CACHE_KEY, data.totalVisits.toString());
       updateCounterDisplay(data.totalVisits);
-    } else {
-      console.warn("POST renvoyé sans totalVisits valide", data);
     }
   } catch (err) {
     console.warn("Erreur analytics, utilisation du cache local:", err);
@@ -89,7 +87,6 @@ function updateCounterDisplay(total) {
   animateNumber(el, start, total, 1500);
 }
 
-// Auto-init
 window.addEventListener("load", () => {
   setTimeout(() => {
     fetchTotalVisits();
