@@ -28,10 +28,13 @@ async function fetchTotalVisits() {
     const res = await fetch(`${ANALYTICS_WORKER_URL}/stats`);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
-    if (data.success) {
+
+    if (data.success && typeof data.totalVisits === "number") {
       localStorage.setItem(CACHE_KEY, data.totalVisits.toString());
       updateCounterDisplay(data.totalVisits);
-    } else throw new Error(data.error || "Réponse invalide");
+    } else {
+      throw new Error(data.error || "Réponse invalide");
+    }
   } catch (e) {
     console.warn("Impossible de récupérer le total, utilisation du cache local:", e);
     const cached = localStorage.getItem(CACHE_KEY);
@@ -61,8 +64,13 @@ async function sendVisit() {
 
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
-    if (data.success) localStorage.setItem(CACHE_KEY, data.totalVisits.toString());
-    updateCounterDisplay(data.totalVisits);
+
+    if (data.success && typeof data.totalVisits === "number") {
+      localStorage.setItem(CACHE_KEY, data.totalVisits.toString());
+      updateCounterDisplay(data.totalVisits);
+    } else {
+      console.warn("POST renvoyé sans totalVisits valide", data);
+    }
   } catch (err) {
     console.warn("Erreur analytics, utilisation du cache local:", err);
     const cached = localStorage.getItem(CACHE_KEY);
