@@ -778,12 +778,12 @@ body.modal-open {
 }
 
 #subscribe-btn {
-  background: linear-gradient(135deg, var(--accent-tertiary) 0%, #ec4899 50%, var(--accent-primary) 100%);
-  background-size: 200% 200%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: #fff;
   padding: 16px 40px;
   border-radius: 60px;
-  border: none;
   font-weight: 700;
   font-size: 1.1rem;
   font-family: "Inter", sans-serif;
@@ -796,17 +796,12 @@ body.modal-open {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 12px;
   overflow: hidden;
   box-shadow:
-    0 8px 30px rgba(244, 63, 94, 0.4),
-    0 0 0 0 rgba(244, 63, 94, 0.4);
-  transition: all 0.4s var(--easing-bounce);
-  animation:
-    subscribeEntry 0.6s var(--easing-out) 0.6s forwards,
-    subscribePulse 3s ease-in-out infinite 1s;
-  opacity: 0;
-  transform: translateY(20px);
+    0 4px 15px rgba(0, 0, 0, 0.2),
+    inset 0 0 20px rgba(255, 255, 255, 0.05);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 @keyframes subscribeEntry {
@@ -835,35 +830,60 @@ body.modal-open {
 #subscribe-btn::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  transition: left 0.6s ease;
+  inset: 0;
+  background: linear-gradient(135deg, var(--accent-tertiary) 0%, #ec4899 50%, var(--accent-primary) 100%);
+  opacity: 0.8;
+  z-index: -1;
+  transition: opacity 0.4s ease;
 }
 
-#subscribe-btn:hover::before {
-  left: 100%;
+#subscribe-btn::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(90deg, var(--accent-tertiary), var(--accent-primary), var(--accent-secondary));
+  background-size: 200% 100%;
+  border-radius: 62px;
+  z-index: -2;
+  animation: borderGlow 3s linear infinite;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+@keyframes borderGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 200% 50%;
+  }
 }
 
 #subscribe-btn:hover {
   transform: translateY(-4px) scale(1.05);
-  background-position: 100% 50%;
   box-shadow:
-    0 20px 50px rgba(244, 63, 94, 0.5),
-    0 0 0 0 rgba(244, 63, 94, 0);
-  animation: subscribePulseHover 1s infinite alternate;
+    0 20px 40px rgba(244, 63, 94, 0.4),
+    0 0 0 2px rgba(255, 255, 255, 0.3),
+    inset 0 0 20px rgba(255, 255, 255, 0.2);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-@keyframes subscribePulseHover {
-  0% {
-    box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.7);
-  }
+#subscribe-btn:hover::before {
+  opacity: 1;
+}
 
-  100% {
-    box-shadow: 0 0 20px 10px rgba(244, 63, 94, 0);
-  }
+#subscribe-btn:hover::after {
+  opacity: 1;
+}
+
+#subscribe-btn svg {
+  transition: transform 0.4s var(--easing-bounce);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+#subscribe-btn:hover svg {
+  transform: scale(1.2) rotate(-5deg);
 }
 
 #subscribe-btn:active {
@@ -1595,73 +1615,80 @@ body.animating #intro-flash {
 }
 
 /* CTA Button */
+
 .games-cta {
   text-align: center;
-  margin-top: 24px;
+  margin-top: 40px;
+  position: relative;
+  z-index: 2;
 }
 
 .btn-all-games {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 16px 36px;
-  background: linear-gradient(135deg, var(--accent-primary) 0%, #7c3aed 50%, var(--accent-tertiary) 100%);
-  background-size: 200% 200%;
-  color: #fff;
-  font-family: "Inter", sans-serif;
-  font-size: 1rem;
+  justify-content: center;
+  gap: 12px;
+  padding: 18px 40px;
+  background: rgba(20, 20, 35, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: 50px;
+  color: var(--text-primary);
+  font-family: "Outfit", sans-serif;
+  font-size: 1.1rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  border-radius: 50px;
-  border: none;
-  cursor: pointer;
+  letter-spacing: 1.5px;
   text-decoration: none;
-  transition: all 0.4s var(--easing-bounce);
-  box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
   position: relative;
   overflow: hidden;
-}
-
-.btn-all-games:hover {
-  transform: translateY(-4px) scale(1.05);
-  box-shadow:
-    0 20px 50px rgba(124, 58, 237, 0.4),
-    0 0 20px rgba(255, 255, 255, 0.2);
-  background-position: 100% 50%;
-}
-
-.btn-all-games:active {
-  transform: translateY(-2px) scale(1.02);
 }
 
 .btn-all-games::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  transition: left 0.6s ease;
+  inset: 0;
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary), var(--accent-primary));
+  background-size: 200% 100%;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+  animation: gradientShimmer 3s linear infinite;
 }
 
-.btn-all-games:hover::before {
-  left: 100%;
-}
-
-
-
-.btn-all-games:hover::before {
-  left: 100%;
+@keyframes gradientShimmer {
+  to {
+    background-position: 200% 0;
+  }
 }
 
 .btn-all-games:hover {
   transform: translateY(-4px) scale(1.05);
-  background-position: 100% 50%;
+  border-color: transparent;
+  color: #fff;
   box-shadow:
-    0 16px 40px rgba(139, 92, 246, 0.5),
-    0 0 0 2px rgba(139, 92, 246, 0.3);
+    0 20px 50px rgba(139, 92, 246, 0.4),
+    0 0 30px rgba(6, 182, 212, 0.3);
+}
+
+.btn-all-games:hover::before {
+  opacity: 1;
+}
+
+.btn-all-games i {
+  transition: transform 0.4s ease;
+}
+
+.btn-all-games:hover i {
+  transform: translateX(4px) rotate(10deg);
+}
+
+.btn-all-games:active {
+  transform: translateY(-2px) scale(1.02);
 }
 
 /* ===========================
