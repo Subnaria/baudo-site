@@ -229,19 +229,7 @@ cards.forEach(card => {
 // ============================
 // GAME JAMS SYSTEM
 // ============================
-const gameJams = [
-  // Exemple de structure d'une game jam (mock data pour test)
-  {
-    id: 1,
-    name: "Ludum Dare 56",
-    theme: "Tiny Creatures",
-    description: "Créez un jeu complet en 72h autour du thème des créatures minuscules. Votez, jouez et partagez !",
-    startDate: "2026-04-10T18:00:00",
-    endDate: "2026-04-13T18:00:00",
-    url: "https://ldjam.com",
-    icon: "<i class=\"fa-solid fa-gamepad\"></i>"
-  }
-];
+const gameJams = [];
 
 function getJamStatus(startDate, endDate) {
   const now = new Date();
@@ -405,9 +393,15 @@ function initGameJams() {
 
   if (sortedJams.length === 0) {
     grid.innerHTML = `
-      <div class="empty-state">
-        <div class="empty-icon">🎮</div>
-        <p>Aucune game jam en cours pour le moment</p>
+      <div class="empty-state-card">
+        <div class="empty-icon-wrapper">
+          <i class="fa-solid fa-ghost empty-icon"></i>
+        </div>
+        <h3>C'est calme... trop calme.</h3>
+        <p>Aucune Game Jam n'est active pour le moment.<br>Rejoins le Discord pour être notifié de la prochaine !</p>
+        <a href="https://discord.com/invite/TxJNqvAV5e" target="_blank" class="empty-cta">
+          <i class="fa-brands fa-discord"></i> Rejoindre le Baudo Crew
+        </a>
       </div>
     `;
     return;
